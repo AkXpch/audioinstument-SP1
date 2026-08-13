@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Hand:wght@400..700&family=Indie+Flower&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Oldenburg&family=Playfair+Display:wght@400..900&family=Roboto+Condensed:ital@0;1&family=Roboto+Slab:wght@600&family=Rye&family=Stardos+Stencil:wght@400;700&display=swap');
+
+/* saving our custom variablr */
+:root {
+    --colour-01: lightpink;
+    --colour-02: rgb(138, 29, 84);
+    --colour-03: lemonchiffon;
+    --colour-04: rgb(194, 200, 251);
+    --border: 0.5rem inset var(--colour-03);
+}
+/* dark mode */
+@media (prefers-color-scheme: dark){
+    :root {
+    --colour-01: rgb(138, 29, 84);
+    --colour-02: lightpink;
+    --colour-03: lemonchiffon;
+    --colour-04: rgb(194, 200, 251);
+
+}
+}
+
+body {
+    font-family: "Edu VIC WA NT Hand", cursive;
+    background-color: var(--colour-04);
+    color: var(--colour-01);
+
+}
+
+dialog[open] {
+    background-color: var(--colour-02);
+    color: var(--colour-01);
+    border: var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+button {
+
+}
+
