@@ -36,7 +36,25 @@ dialog[open] {
 
 }
 
+button {
+    border: var(--border);
+}
+/*changes my mouse cursor when I hover over it.*/
+.whiteKey {
+    cursor: pointer;
+}
+.whiteKey:hover {
+    background-color: coral;
+}
+.whiteKey:active {
+    background-color: red;
+}
 
+img {
+    /*need this to make layer event info work*/
+    position: relative;
+    margin: 1rem;
+}
 
 
 

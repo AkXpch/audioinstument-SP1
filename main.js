@@ -148,3 +148,32 @@ function pitchBend(e){
     });
 
 }
+
+greenhousePainting.addEventListener("mouseenter", playNote);
+greenhousePainting.addEventListener("mouseleave", endNote);
+greenhousePainting.addEventListener("mousemove", pitchBend);
+
+//This part make audio behave differently depending on the current minute of the hour.
+//eg. If the current minute is 40–59 → make the audio slow.
+//      If the current minute is 0–39 → make the audio fast.
+
+//find timezone
+let timeZone = Temporal.Now.timeZoneId();
+console.log(timeZone);
+//fine current instant eg. 2026-09-07T06:45:32.
+let currentInstant = Temporal.Now.instant();
+// turn into local date and time eg. 6:45 AM, Melbourne 
+// bc instant is universal point in time, we want to know the time where we are.
+let currentDateTime = currentInstant.toZoneDateTimeISO(timeZone);
+//get only the time
+let plainTime = Temporal.plainTime.from(currentDateTime);
+
+// If the current minute is 40–59 → make the audio slow.
+// If the current minute is 0–39 → make the audio fast.
+if(plainTime > 39){
+    audioTrack.playbackRate = 0.5;
+}else{
+    audioTrack.playbackRate = 2.0;
+}
+
+
