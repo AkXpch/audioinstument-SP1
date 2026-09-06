@@ -2,12 +2,29 @@
 
 //find my test button
 const testButton = document.getElementById("test-button");
+
+// find key button
+const key = document.getElementById("key-test");
+
 // find our intro modal
 const introModal = document.getElementById("intro-modal");
 //console.log(introModal) // console.log() use to print information into brow
 //find modal close button
 const introModalCloseButton = document.getElementById("intro-modal-close");
 
+
+// create valuable use to manage mouse bottom down
+//is the mouse button held?
+let mouseButtonDown = false;
+// update our variable based on the mouse being held down
+// addEventListener = watch for something happening, then run this function
+window.addEventListener(mousedown, function(){ 
+    mouseButtonDown = true;
+
+});
+window.addEventListener(mouseup, function(){
+    mouseButtonDown = false;
+});
 
 
 /////Modal
@@ -29,7 +46,8 @@ introModal.addEventListener("close", toneInit);
 ///// Tone
 
 //create instuent and connect to audio
-const synth = new Tone.Synth();
+//const synth = new Tone.Synth(); - for one note at a time
+const synth = new Tone.PolySynth(); // multiple note at a time
 
 function toneInit() {
     //connect Synth to audio output
@@ -40,7 +58,56 @@ function toneInit() {
 // do something when we click that button
 testButton.addEventListener("click",playTestNote);
 
-function playTestNote(){
-    synth.triggerAttackRelease("C4", "8n");
+function playNote(e){
+    //find the element that the event(e) ran on #target is build-in fucntion
+    let keyPressed = e.target;
+    console.log(keyPressed);
+
+    // find the data-note attribute of that elements #data-..... is build-in fuction
+    // eg. data-pizza -> let pizza = keyPressed.dataset.pizza
+    let note = keyPressed.dataset.note;
+    console.log(note);
+    //play the note for the right amount of time
+
+    //if mouse button is held previously play note
+    if(mouseButtonDown === true) {// == convert the type before compare so 5 == "5" is true 
+                                //but === stricter! it compare without convert the type, so 5 === "5" is false
+    
+    synth.triggerAttackRelease(note);
+    }
 }
+
+function playImageNote(e){
+    //find the element that the event(e) ran on #target is build-in fucntion
+    let keyPressed = e.target;
+    console.log(keyPressed);
+
+    // find the data-note attribute of that elements #data-..... is build-in fuction
+    let note = keyPressed.dataset.note;
+    //console.log(note);
+    //play the note for the right amount of time
+    //if mouse button is held previously play note
+
+    synth.triggerAttackRelease(note);
+}
+
+function endNote(e){
+    let keyPressed = e.target;
+    console.log(keyPressed)
+
+    let note = keyPressed.dataset.note;
+
+    synth.triggerRelease(note); // triggerRelease is Tone.js fuctions
+}
+
+// Check if the note move when move across keys
+testButton.addEventListener(mousedown, playNote);
+testButton.addEventListener(mouseenter, playNote);
+testButton.addEventListener(mouseup, endNote);
+testButton.addEventListener(mouseleave, endNote);
+
+key.addEventListener(mousedown, playNote);
+key.addEventListener(mouseenter, playNote);
+key.addEventListener(mouseup, endNote);
+key.addEventListener(mouseleave, endNote);
 

@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <!-- make warning box before go in to main page-->
     <dialog id="intro-modal">
         <p>
         Noise Incoming!!!!
@@ -27,7 +28,12 @@
     </header>
 
     <main>
-        <button id="test-button">make sound</button>
+    
+        <button id="test-button" data-note="C4">make sound</button>
+        <button id="key-test">key</button>
+
+        <!-- Bring in pre-render audio file-->
+         <audio id="audio-track" src="./assets/audio/p-hase_Leapt.mp3" controls></audio>
     </main>
     
     
