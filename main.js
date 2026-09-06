@@ -127,3 +127,13 @@ function playPauseAudio() {
 playBackButton.addEventListener("click", playPauseAudio);
 
 
+// Random location button - to randomly choose start time in the track.
+// set the variable
+const randomButton = document.getElementById("random=location");
+
+function randomLocation() {
+    let trackLength = audioTrack.duration; // trackLength = the actual length of whatever audio file is loaded
+    audioTrack.currentTime = trackLength * Math.random(); // random from 0 to 1
+}
+randomButton.addEventListener("click", randomLocation);
+
