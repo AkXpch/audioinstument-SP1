@@ -129,7 +129,7 @@ playBackButton.addEventListener("click", playPauseAudio);
 
 // Random location button - to randomly choose start time in the track.
 // set the variable
-const randomButton = document.getElementById("random=location");
+const randomButton = document.getElementById("random-location");
 
 function randomLocation() {
     let trackLength = audioTrack.duration; // trackLength = the actual length of whatever audio file is loaded
@@ -137,3 +137,14 @@ function randomLocation() {
 }
 randomButton.addEventListener("click", randomLocation);
 
+// set variable for picture
+const greenhousePainting = document.getElementById("greenhouse-painting");
+
+// changing the pitch of the sound based on where your mouse is.
+function pitchBend(e){
+    //console.log(e,layerX);
+    synth.set({
+        detune: e.layerX
+    });
+
+}
