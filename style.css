@@ -54,6 +54,11 @@ img {
     /*need this to make layer event info work*/
     position: relative;
     margin: 1rem;
+    height: 600px;
+}
+
+main {
+    
 }
 
 

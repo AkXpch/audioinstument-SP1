@@ -138,7 +138,7 @@ function randomLocation() {
 randomButton.addEventListener("click", randomLocation);
 
 // set variable for picture
-const greenhousePainting = document.getElementById("greenhouse-painting");
+const greenhousePainting = document.getElementById("kitchen-bg");
 
 // changing the pitch of the sound based on where your mouse is.
 function pitchBend(e){
